@@ -1,22 +1,24 @@
-//
-//  ContentView.swift
-//  JokeSwiftUI
-//
-//  Created by Murathan karagöz on 29.08.2023.
-//
 
 import SwiftUI
 
 struct ContentView: View {
+  
+    
+    @ObservedObject var JokesVm = JokesViewModel()
+    
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        NavigationStack {
+            List(JokesVm.jokes) { element in
+                Text(element.joke)
+            }.navigationTitle("JOKES LİST")
         }
-        .padding()
+        
     }
+    
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
